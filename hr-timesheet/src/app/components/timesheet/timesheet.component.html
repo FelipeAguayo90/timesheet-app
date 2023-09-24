@@ -10,11 +10,20 @@
           placeholder="Employee Name"
           type="text"
         />
+        <mat-error *ngIf="employeeNameFC.hasError('duplicate')"
+          >Duplicate Name</mat-error
+        >
       </mat-form-field>
 
-      <button mat-mini-fab color="primary" (click)="addEmployee()">
+      <button
+        mat-mini-fab
+        color="primary"
+        [disabled]="employeeNameFC.invalid"
+        (click)="addEmployee()"
+      >
         <mat-icon>add</mat-icon>
       </button>
+
       <div>{{ employees | json }}</div>
     </mat-card>
   </div>
